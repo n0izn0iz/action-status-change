@@ -37,7 +37,8 @@ Toolkit.run(async tools => {
     description: "A wild action appeared",
     targetURL: "https://bit.ly/4kb77v",
     repo: tools.context.repo,
-    sha: tools.context.sha
+    sha: tools.context.sha,
+    token: tools.token
   });
   tools.exit.success("We did it!");
 });
