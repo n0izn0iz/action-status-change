@@ -25,8 +25,8 @@ const updateStatus = ({
   });
 
 Toolkit.run(async tools => {
+  tools.log("arguments", tools.arguments);
   const argsList = tools.arguments._;
-  tools.log("arguments", argsList);
   if (argsList.length < 2) {
     tools.exit.failure("Invalid usage: requires context and state arguments");
     return;
