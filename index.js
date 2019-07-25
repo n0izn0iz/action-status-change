@@ -1,5 +1,6 @@
 const {Toolkit} = require("actions-toolkit");
 const fetch = require("node-fetch");
+const httpError = require("http-errors");
 
 const updateStatus = ({
   state,
@@ -11,7 +12,7 @@ const updateStatus = ({
   sha,
   token
 }) =>
-  fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
+  fetch(`https://api.github.com/v3/repos/${owner}/${repo}/statuses/${sha}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -53,9 +54,10 @@ Toolkit.run(
       tools.log(args);
 
       const response = await updateStatus({...args, token: tools.token});
-      tools.log.success("Status updated:");
+      tools.log.success("Got response:");
       tools.log.success(response);
-      tools.exit.success();
+      if (!response.ok) throw httpError(response.status);
+      tools.exit.success("Status updated");
     } catch (error) {
       tools.exit.failure(error);
     }

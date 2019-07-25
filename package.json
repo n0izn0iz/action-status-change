@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "actions-toolkit": "^2.1.0",
+    "http-errors": "^1.7.3",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
