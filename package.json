@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
-    "test": "jest"
+    "test": "GITHUB_REPOSITORY=owner/repo GITHUB_SHA=2ceac52567a6f10318440cf3d19f0b315d0e1b7d jest"
   },
   "dependencies": {
     "actions-toolkit": "^2.1.0",
