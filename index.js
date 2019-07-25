@@ -7,10 +7,11 @@ const updateStatus = ({
   targetURL,
   context,
   repo,
+  owner,
   sha,
   token
 }) =>
-  fetch(`https://api.github.com/repos/${repo}/statuses/${sha}`, {
+  fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +45,8 @@ Toolkit.run(
         state,
         description: "A wild action appeared",
         targetURL: "https://bit.ly/4kb77v",
-        repo: tools.context.repo,
+        repo: tools.context.repo.repo,
+        owner: tools.context.repo.owner,
         sha: tools.context.sha
       };
       tools.log("Payload:", args);
