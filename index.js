@@ -49,11 +49,10 @@ Toolkit.run(
         owner: tools.context.repo.owner,
         sha: tools.context.sha
       };
-      tools.log("Payload:", args);
+      tools.log(`Payload:\n${args}`);
 
       const response = await updateStatus({...args, token: tools.token});
-
-      tools.exit.success("Status updated:", response);
+      tools.exit.success(`Status updated:\n${response}`);
     } catch (error) {
       tools.exit.failure(error);
     }
