@@ -12,11 +12,11 @@ const updateStatus = ({
   sha,
   token
 }) =>
-  fetch(`https://api.github.com/v3/repos/${owner}/${repo}/statuses/${sha}`, {
+  fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${sha}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: token
+      Authorization: `token ${token}`
     },
     body: JSON.stringify({
       state,
